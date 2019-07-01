@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ColemanIdmanClubuModelStoreContainer" CdmEntityContainer="ColemanIdmanClubuEntities2">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="HasVerified" ColumnName="HasVerified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="ColemanIdmanClubuModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ServicesId" ColumnName="ServicesId" />
+          <ScalarProperty Name="PacketId" ColumnName="PacketId" />
+          <ScalarProperty Name="OrdersId" ColumnName="OrdersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packets">
+      <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Packet">
+        <MappingFragment StoreEntitySet="Packet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateWeek" ColumnName="DateWeek" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Service">
+        <MappingFragment StoreEntitySet="Services">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicesToPackets">
+      <EntityTypeMapping TypeName="ColemanIdmanClubuModel.ServicesToPacket">
+        <MappingFragment StoreEntitySet="ServicesToPacket">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ServicesId" ColumnName="ServicesId" />
+          <ScalarProperty Name="PacketId" ColumnName="PacketId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

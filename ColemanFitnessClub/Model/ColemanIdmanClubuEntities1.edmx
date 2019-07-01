@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ColemanIdmanClubuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="HasVerified" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="ServicesId" Type="int" />
+          <Property Name="PacketId" Type="int" />
+          <Property Name="OrdersId" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" />
+        </EntityType>
+        <EntityType Name="Packet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateWeek" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesToPacket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServicesId" Type="int" />
+          <Property Name="PacketId" Type="int" />
+        </EntityType>
+        <Association Name="FK__Employee__RoleId__3B75D760">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Custo__4BAC3F29">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__4E88ABD4">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrdersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Packe__4D94879B">
+          <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="PacketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Servi__4CA06362">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ServicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Employee__48CFD27E">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServicesT__Packe__4316F928">
+          <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+          <End Role="ServicesToPacket" Type="Self.ServicesToPacket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesToPacket">
+              <PropertyRef Name="PacketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServicesT__Servi__4222D4EF">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+          <End Role="ServicesToPacket" Type="Self.ServicesToPacket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesToPacket">
+              <PropertyRef Name="ServicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ColemanIdmanClubuModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packet" EntityType="Self.Packet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesToPacket" EntityType="Self.ServicesToPacket" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Employee__RoleId__3B75D760" Association="Self.FK__Employee__RoleId__3B75D760">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Custo__4BAC3F29" Association="Self.FK__OrderDeta__Custo__4BAC3F29">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__4E88ABD4" Association="Self.FK__OrderDeta__Order__4E88ABD4">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Packe__4D94879B" Association="Self.FK__OrderDeta__Packe__4D94879B">
+            <End Role="Packet" EntitySet="Packet" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Servi__4CA06362" Association="Self.FK__OrderDeta__Servi__4CA06362">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Employee__48CFD27E" Association="Self.FK__Orders__Employee__48CFD27E">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServicesT__Packe__4316F928" Association="Self.FK__ServicesT__Packe__4316F928">
+            <End Role="Packet" EntitySet="Packet" />
+            <End Role="ServicesToPacket" EntitySet="ServicesToPacket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServicesT__Servi__4222D4EF" Association="Self.FK__ServicesT__Servi__4222D4EF">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ServicesToPacket" EntitySet="ServicesToPacket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ColemanIdmanClubuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Custo__4BAC3F29" FromRole="Customer" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="HasVerified" Type="Boolean" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Employee__RoleId__3B75D760" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Employee__48CFD27E" FromRole="Employee" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="ServicesId" Type="Int32" />
+          <Property Name="PacketId" Type="Int32" />
+          <Property Name="OrdersId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__OrderDeta__Custo__4BAC3F29" FromRole="OrderDetails" ToRole="Customer" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__OrderDeta__Order__4E88ABD4" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="Packet" Relationship="Self.FK__OrderDeta__Packe__4D94879B" FromRole="OrderDetails" ToRole="Packet" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__OrderDeta__Servi__4CA06362" FromRole="OrderDetails" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Orders__Employee__48CFD27E" FromRole="Orders" ToRole="Employee" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__4E88ABD4" FromRole="Orders" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="Packet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateWeek" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Packe__4D94879B" FromRole="Packet" ToRole="OrderDetails" />
+          <NavigationProperty Name="ServicesToPackets" Relationship="Self.FK__ServicesT__Packe__4316F928" FromRole="Packet" ToRole="ServicesToPacket" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__RoleId__3B75D760" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Servi__4CA06362" FromRole="Services" ToRole="OrderDetails" />
+          <NavigationProperty Name="ServicesToPackets" Relationship="Self.FK__ServicesT__Servi__4222D4EF" FromRole="Services" ToRole="ServicesToPacket" />
+        </EntityType>
+        <EntityType Name="ServicesToPacket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServicesId" Type="Int32" />
+          <Property Name="PacketId" Type="Int32" />
+          <NavigationProperty Name="Packet" Relationship="Self.FK__ServicesT__Packe__4316F928" FromRole="ServicesToPacket" ToRole="Packet" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__ServicesT__Servi__4222D4EF" FromRole="ServicesToPacket" ToRole="Services" />
+        </EntityType>
+        <Association Name="FK__OrderDeta__Custo__4BAC3F29">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__RoleId__3B75D760">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Employee__48CFD27E">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__4E88ABD4">
+          <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrdersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Packe__4D94879B">
+          <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="PacketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Servi__4CA06362">
+          <End Role="Services" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ServicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServicesT__Packe__4316F928">
+          <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+          <End Role="ServicesToPacket" Type="Self.ServicesToPacket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesToPacket">
+              <PropertyRef Name="PacketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServicesT__Servi__4222D4EF">
+          <End Role="Services" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="ServicesToPacket" Type="Self.ServicesToPacket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesToPacket">
+              <PropertyRef Name="ServicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ColemanIdmanClubuEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Packets" EntityType="Self.Packet" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="ServicesToPackets" EntityType="Self.ServicesToPacket" />
+          <AssociationSet Name="FK__OrderDeta__Custo__4BAC3F29" Association="Self.FK__OrderDeta__Custo__4BAC3F29">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__RoleId__3B75D760" Association="Self.FK__Employee__RoleId__3B75D760">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Employee__48CFD27E" Association="Self.FK__Orders__Employee__48CFD27E">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__4E88ABD4" Association="Self.FK__OrderDeta__Order__4E88ABD4">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Packe__4D94879B" Association="Self.FK__OrderDeta__Packe__4D94879B">
+            <End Role="Packet" EntitySet="Packets" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Servi__4CA06362" Association="Self.FK__OrderDeta__Servi__4CA06362">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServicesT__Packe__4316F928" Association="Self.FK__ServicesT__Packe__4316F928">
+            <End Role="Packet" EntitySet="Packets" />
+            <End Role="ServicesToPacket" EntitySet="ServicesToPackets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServicesT__Servi__4222D4EF" Association="Self.FK__ServicesT__Servi__4222D4EF">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ServicesToPacket" EntitySet="ServicesToPackets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ColemanIdmanClubuModelStoreContainer" CdmEntityContainer="ColemanIdmanClubuEntities2">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="HasVerified" ColumnName="HasVerified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="ColemanIdmanClubuModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ServicesId" ColumnName="ServicesId" />
+                <ScalarProperty Name="PacketId" ColumnName="PacketId" />
+                <ScalarProperty Name="OrdersId" ColumnName="OrdersId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packets">
+            <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Packet">
+              <MappingFragment StoreEntitySet="Packet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateWeek" ColumnName="DateWeek" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="ColemanIdmanClubuModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesToPackets">
+            <EntityTypeMapping TypeName="ColemanIdmanClubuModel.ServicesToPacket">
+              <MappingFragment StoreEntitySet="ServicesToPacket">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServicesId" ColumnName="ServicesId" />
+                <ScalarProperty Name="PacketId" ColumnName="PacketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

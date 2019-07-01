@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4AE5C04-154E-4F50-A5F8-FF04A34D439E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ColemanFitnessClub</RootNamespace>
+    <AssemblyName>ColemanFitnessClub</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminAddAddPacket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminAddAddPacket.Designer.cs">
+      <DependentUpon>AdminAddAddPacket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminAddEmployee.Designer.cs">
+      <DependentUpon>AdminAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddPacket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminAddPacket.Designer.cs">
+      <DependentUpon>AdminAddPacket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminAddServices.Designer.cs">
+      <DependentUpon>AdminAddServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEditAddServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminEditAddServices.Designer.cs">
+      <DependentUpon>AdminEditAddServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminEditEmployee.Designer.cs">
+      <DependentUpon>AdminEditEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEditPacket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminEditPacket.Designer.cs">
+      <DependentUpon>AdminEditPacket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminReadEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminReadEmployee.Designer.cs">
+      <DependentUpon>AdminReadEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminReadServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminReadServices.Designer.cs">
+      <DependentUpon>AdminReadServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminRole.Designer.cs">
+      <DependentUpon>AdminRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminsServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminsServices.Designer.cs">
+      <DependentUpon>AdminsServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees.Designer.cs">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminEmployee.Designer.cs">
+      <DependentUpon>AdminEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ColemanIdmanClubuEntities1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColemanIdmanClubuEntities1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ColemanIdmanClubuEntities1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ColemanIdmanClubuEntities1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColemanIdmanClubuEntities1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Customer.cs">
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee.cs">
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Order.cs">
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrderDetail.cs">
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Packet.cs">
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Roles.cs" />
+    <Compile Include="Model\Service.cs">
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Services2.cs" />
+    <Compile Include="Model\ServicesToPacket.cs">
+      <DependentUpon>ColemanIdmanClubuEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AdminReadPacket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminReadPacket.Designer.cs">
+      <DependentUpon>AdminReadPacket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Hash.cs" />
+    <Compile Include="VerifyPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerifyPasswordForm.Designer.cs">
+      <DependentUpon>VerifyPasswordForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminAddAddPacket.resx">
+      <DependentUpon>AdminAddAddPacket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminAddEmployee.resx">
+      <DependentUpon>AdminAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminAddPacket.resx">
+      <DependentUpon>AdminAddPacket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminAddServices.resx">
+      <DependentUpon>AdminAddServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminEditAddServices.resx">
+      <DependentUpon>AdminEditAddServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminEditEmployee.resx">
+      <DependentUpon>AdminEditEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminEditPacket.resx">
+      <DependentUpon>AdminEditPacket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminReadEmployee.resx">
+      <DependentUpon>AdminReadEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminReadServices.resx">
+      <DependentUpon>AdminReadServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminRole.resx">
+      <DependentUpon>AdminRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminsServices.resx">
+      <DependentUpon>AdminsServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees.resx">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminEmployee.resx">
+      <DependentUpon>AdminEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="AdminReadPacket.resx">
+      <DependentUpon>AdminReadPacket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerifyPasswordForm.resx">
+      <DependentUpon>VerifyPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\ColemanIdmanClubuEntities1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ColemanIdmanClubuEntities1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\ColemanIdmanClubuEntities1.edmx.diagram">
+      <DependentUpon>ColemanIdmanClubuEntities1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ColemanIdmanClubuEntities1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ColemanIdmanClubuEntities1.edmx</DependentUpon>
+      <LastGenOutput>ColemanIdmanClubuEntities1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ColemanIdmanClubuEntities1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ColemanIdmanClubuEntities1.edmx</DependentUpon>
+      <LastGenOutput>ColemanIdmanClubuEntities1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\legacy-5.jpg" />
+    <None Include="Resources\images.jpg" />
+    <None Include="Resources\images %282%29.jpg" />
+    <None Include="Resources\images %281%29.jpg" />
+    <None Include="Resources\fitness-excercise.jpg" />
+    <None Include="Resources\Fat-Loss_4_Workout_Protocol.jpg" />
+    <None Include="Resources\sore_after_workout_en8c0746b41d2b773941a278bfa87a2408.jpg" />
+    <None Include="Resources\SIT-vs-HIIT-1.jpg" />
+    <None Include="Resources\Ronnie-Coleman-4.jpg" />
+    <None Include="Resources\Kelsey-Wells-t.jpg" />
+    <None Include="Resources\how-to-speed-up-metabolism.jpg" />
+    <None Include="Resources\bodybuilder.jpg" />
+    <None Include="Resources\7-downsides-of-being-a-bodybuilder.jpg" />
+    <None Include="Resources\4-common-myths-about-women-and-fitness-header-v2-400x225.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
