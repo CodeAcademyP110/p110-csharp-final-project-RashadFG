@@ -65,6 +65,7 @@
             this.txtPassword.Size = new System.Drawing.Size(248, 29);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.Text = "12345678";
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
             // 

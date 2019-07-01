@@ -41,12 +41,12 @@
             this.servicesPacketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbCustoemrs = new System.Windows.Forms.ComboBox();
             this.lblCustomer = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbDate = new System.Windows.Forms.ComboBox();
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblDateTime = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +76,7 @@
             this.lblServices.AutoSize = true;
             this.lblServices.BackColor = System.Drawing.Color.Transparent;
             this.lblServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServices.ForeColor = System.Drawing.Color.Transparent;
+            this.lblServices.ForeColor = System.Drawing.Color.Black;
             this.lblServices.Location = new System.Drawing.Point(30, 34);
             this.lblServices.Name = "lblServices";
             this.lblServices.Size = new System.Drawing.Size(90, 24);
@@ -88,7 +88,7 @@
             this.lblPacket.AutoSize = true;
             this.lblPacket.BackColor = System.Drawing.Color.Transparent;
             this.lblPacket.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPacket.ForeColor = System.Drawing.Color.Transparent;
+            this.lblPacket.ForeColor = System.Drawing.Color.Black;
             this.lblPacket.Location = new System.Drawing.Point(30, 111);
             this.lblPacket.Name = "lblPacket";
             this.lblPacket.Size = new System.Drawing.Size(72, 24);
@@ -98,6 +98,7 @@
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.Black;
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(440, 209);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(409, 48);
@@ -119,7 +120,7 @@
             this.lblPrices.AutoSize = true;
             this.lblPrices.BackColor = System.Drawing.Color.Transparent;
             this.lblPrices.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrices.ForeColor = System.Drawing.Color.Transparent;
+            this.lblPrices.ForeColor = System.Drawing.Color.Black;
             this.lblPrices.Location = new System.Drawing.Point(603, 30);
             this.lblPrices.Name = "lblPrices";
             this.lblPrices.Size = new System.Drawing.Size(68, 24);
@@ -131,7 +132,7 @@
             this.lblServicesDate.AutoSize = true;
             this.lblServicesDate.BackColor = System.Drawing.Color.Transparent;
             this.lblServicesDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServicesDate.ForeColor = System.Drawing.Color.Transparent;
+            this.lblServicesDate.ForeColor = System.Drawing.Color.Black;
             this.lblServicesDate.Location = new System.Drawing.Point(312, 30);
             this.lblServicesDate.Name = "lblServicesDate";
             this.lblServicesDate.Size = new System.Drawing.Size(138, 24);
@@ -177,21 +178,12 @@
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.BackColor = System.Drawing.Color.Transparent;
             this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.ForeColor = System.Drawing.Color.Transparent;
+            this.lblCustomer.ForeColor = System.Drawing.Color.Black;
             this.lblCustomer.Location = new System.Drawing.Point(312, 111);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(99, 24);
             this.lblCustomer.TabIndex = 29;
             this.lblCustomer.Text = "Customer";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 271);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(898, 139);
-            this.dataGridView1.TabIndex = 30;
             // 
             // cmbDate
             // 
@@ -254,26 +246,38 @@
             this.lblDateTime.AutoSize = true;
             this.lblDateTime.BackColor = System.Drawing.Color.Transparent;
             this.lblDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.ForeColor = System.Drawing.Color.Transparent;
+            this.lblDateTime.ForeColor = System.Drawing.Color.Black;
             this.lblDateTime.Location = new System.Drawing.Point(603, 111);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(106, 24);
             this.lblDateTime.TabIndex = 35;
             this.lblDateTime.Text = "OrderDate";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 256);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(867, 150);
+            this.dataGridView1.TabIndex = 36;
+            // 
             // Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ColemanFitnessClub.Properties.Resources.legacy_5;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(867, 406);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblEmployeeName);
             this.Controls.Add(this.cmbDate);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblCustomer);
             this.Controls.Add(this.cmbCustoemrs);
             this.Controls.Add(this.txtPrices);
@@ -285,11 +289,10 @@
             this.Controls.Add(this.cmbPacket);
             this.Controls.Add(this.cmbservices);
             this.Controls.Add(this.menuStrip1);
-            this.ForeColor = System.Drawing.Color.Transparent;
+            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Employees";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "b";
             this.Load += new System.EventHandler(this.Employees_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -313,11 +316,11 @@
         private System.Windows.Forms.ToolStripMenuItem servicesPacketsToolStripMenuItem;
         private System.Windows.Forms.ComboBox cmbCustoemrs;
         private System.Windows.Forms.Label lblCustomer;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox cmbDate;
         private System.Windows.Forms.Label lblEmployeeName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label lblDateTime;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

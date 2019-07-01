@@ -47,7 +47,6 @@ namespace ColemanFitnessClub
             nmrcPrice.Value = Pac.Price;
 
             List<ServicesToPacket> listofpackage = _contex2.ServicesToPackets.Where(ser => ser.PacketId ==Pac.Id).ToList();
-
             foreach (var control in flowLayoutPanel1.Controls)
             {
                 var checkbox = (CheckBox)control;
